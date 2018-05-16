@@ -1,0 +1,22 @@
+Change Component Comment : Designator=VT1 Old Comment=KSC1623YMTF ON Semiconductor New Comment=PBSS2540E ON Semiconductor
+Change Component Comment : Designator=VT2 Old Comment=KSC1623YMTF ON Semiconductor New Comment=PBSS2540E ON Semiconductor
+Change Component Comment : Designator=VT3 Old Comment=KSC1623YMTF ON Semiconductor New Comment=PBSS2540E ON Semiconductor
+Change component parameters: Designator = "VT1"; Footprint = "SOT23"; UniqueID = "\MQLWNGJN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/KSC1623YMTF/KSC1623YMTFTR-ND/1047566"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "PBSS2540E"; VariantName = "[No Variations]"
+Change component parameters: Designator = "VT2"; Footprint = "SOT23"; UniqueID = "\MILWXIKI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/KSC1623YMTF/KSC1623YMTFTR-ND/1047566"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "PBSS2540E"; VariantName = "[No Variations]"
+Change component parameters: Designator = "VT3"; Footprint = "SOT23"; UniqueID = "\XGKANWED"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/KSC1623YMTF/KSC1623YMTFTR-ND/1047566"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "ON Semiconductor"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "PBSS2540E"; VariantName = "[No Variations]"
+Added Room: Name=CodeBlock

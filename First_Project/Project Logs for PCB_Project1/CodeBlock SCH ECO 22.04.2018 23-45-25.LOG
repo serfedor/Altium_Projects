@@ -1,0 +1,16 @@
+Change Value of Parameter Manufacturer in Part VD1 Old=Diodes Incorporated New=NXP
+Change Value of Parameter Manufacturer in Part VD2 Old=Diodes Incorporated New=NXP
+Change Value of Parameter Manufacturer in Part VD3 Old=Diodes Incorporated New=NXP
+Change Value of Parameter Manufacturer in Part VT1 Old=Fairchild/ON Semiconductor New=Infineon
+Change Value of Parameter Manufacturer in Part VT2 Old=Fairchild/ON Semiconductor New=Infineon
+Change Value of Parameter Manufacturer in Part VT3 Old=Fairchild/ON Semiconductor New=Infineon
+Change Value of Parameter Manufacturer in Part XP1 Old=Wurth Electronics Inc. New=KLS
+Change Value of Parameter Manufacturer in Part ZQ1 Old=Abracon New=Jauch
+Added Parameter ComponentLink2Description=Component to Part DD2
+Added Parameter ComponentLink2Description=Component to Part DD2
+Added Parameter ComponentLink2Description=Component to Part DD2
+Added Parameter ComponentLink2Description=Component to Part DD2
+Added Parameter ComponentLink2URL=https://www.digikey.com/product-detail/en/texas-instruments/SN74F38DR/296-14312-2-ND/528568 to Part DD2
+Added Parameter ComponentLink2URL=https://www.digikey.com/product-detail/en/texas-instruments/SN74F38DR/296-14312-2-ND/528568 to Part DD2
+Added Parameter ComponentLink2URL=https://www.digikey.com/product-detail/en/texas-instruments/SN74F38DR/296-14312-2-ND/528568 to Part DD2
+Added Parameter ComponentLink2URL=https://www.digikey.com/product-detail/en/texas-instruments/SN74F38DR/296-14312-2-ND/528568 to Part DD2

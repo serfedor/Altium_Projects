@@ -1,0 +1,238 @@
+Change Component Comment : Designator=VD1 Old Comment=1N4148W-7-F Diodes Incorporated New Comment=1N4148W-7-F NXP
+Change Component Comment : Designator=VD2 Old Comment=1N4148W-7-F Diodes Incorporated New Comment=1N4148W-7-F NXP
+Change Component Comment : Designator=VD3 Old Comment=1N4148W-7-F Diodes Incorporated New Comment=1N4148W-7-F NXP
+Change Component Comment : Designator=XP1 Old Comment=732-2747-ND Wurth Electronics Inc. New Comment=732-2747-ND KLS
+Change Component Comment : Designator=ZQ1 Old Comment=ABMM2-32.768MHZ Abracon New Comment=ABMM2-32.768MHZ Jauch
+Change Component Comment : Designator=DD10 Old Comment=CD4011BM96 Texas Instruments New Comment=SN74F11BM96 Texas Instruments
+Change Component Comment : Designator=DD2 Old Comment=CD4011BM96 Texas Instruments New Comment=SN74F38DR Texas Instruments
+Change Component Comment : Designator=DD6 Old Comment=CD4013BM96 Texas Instruments New Comment=SN74F13BM96 Texas Instruments
+Change Component Comment : Designator=DD11 Old Comment=CD4013BM96 Texas Instruments New Comment=SN74F13BM96 Texas Instruments
+Change Component Comment : Designator=DD9 Old Comment=CD4023BM Texas Instruments New Comment=SN74F23BM Texas Instruments
+Change Component Comment : Designator=DD3 Old Comment=CD4024BM Texas Instruments New Comment=SN74F24BM Texas Instruments
+Change Component Comment : Designator=DD4 Old Comment=CD4024BM Texas Instruments New Comment=SN74F24BM Texas Instruments
+Change Component Comment : Designator=DD7 Old Comment=CD4028BM96 Texas Instruments New Comment=SN74F28BM96 Texas Instruments
+Change Component Comment : Designator=DD8 Old Comment=CD4028BM96 Texas Instruments New Comment=SN74F28BM96 Texas Instruments
+Change Component Comment : Designator=DD5 Old Comment=CD4070BM96 Texas Instruments New Comment=SN74F70BM96 Texas Instruments
+Change Component Comment : Designator=VT1 Old Comment=KSC1623YMTF Fairchild/ON Semiconductor New Comment=KSC1623YMTF Infineon
+Change Component Comment : Designator=VT2 Old Comment=KSC1623YMTF Fairchild/ON Semiconductor New Comment=KSC1623YMTF Infineon
+Change Component Comment : Designator=VT3 Old Comment=KSC1623YMTF Fairchild/ON Semiconductor New Comment=KSC1623YMTF Infineon
+Change Component Comment : Designator=R10 Old Comment=R-0805 0,125 Âò 1.8 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 1.8 êÎì 5% Hitano
+Change Component Comment : Designator=R6 Old Comment=R-0805 0,125 Âò 1 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 1 êÎì 5% Hitano
+Change Component Comment : Designator=R4 Old Comment=R-0805 0,125 Âò 10 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 10 êÎì 5% Hitano
+Change Component Comment : Designator=R8 Old Comment=R-0805 0,125 Âò 10 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 10 êÎì 5% Hitano
+Change Component Comment : Designator=R11 Old Comment=R-0805 0,125 Âò 10 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 10 êÎì 5% Hitano
+Change Component Comment : Designator=R1 Old Comment=R-0805 0,125 Âò 22 ÌÎì 5% Yageo New Comment=R-0805 0,125 Âò 22 ÌÎì 5% Hitano
+Change Component Comment : Designator=R5 Old Comment=R-0805 0,125 Âò 56 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 56 êÎì 5% Hitano
+Change Component Comment : Designator=R9 Old Comment=R-0805 0,125 Âò 56 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 56 êÎì 5% Hitano
+Change Component Comment : Designator=R12 Old Comment=R-0805 0,125 Âò 100 Îì 5% Yageo New Comment=R-0805 0,125 Âò 100 Îì 5% Hitano
+Change Component Comment : Designator=R3 Old Comment=R-0805 0,125 Âò 100 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 100 êÎì 5% Hitano
+Change Component Comment : Designator=R7 Old Comment=R-0805 0,125 Âò 200 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 200 êÎì 5% Hitano
+Change Component Comment : Designator=R2 Old Comment=R-0805 0,125 Âò 560 êÎì 5% Yageo New Comment=R-0805 0,125 Âò 560 êÎì 5% Hitano
+Change component parameters: Designator = "R1"; Footprint = "RC0805N"; UniqueID = "\KAUJPYGO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "22 ÌÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R2"; Footprint = "RC0805N"; UniqueID = "\KSYWQUQE"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "560 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R3"; Footprint = "RC0805N"; UniqueID = "\JCVISPGW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R4"; Footprint = "RC0805N"; UniqueID = "\WDMCYNXQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R5"; Footprint = "RC0805N"; UniqueID = "\LFKTOUWU"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "56 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R6"; Footprint = "RC0805N"; UniqueID = "\YENGBKTN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "1 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R7"; Footprint = "RC0805N"; UniqueID = "\PESINEAX"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "200 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R8"; Footprint = "RC0805N"; UniqueID = "\NDXQGAEC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R9"; Footprint = "RC0805N"; UniqueID = "\ADXKTPML"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "56 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R10"; Footprint = "RC0805N"; UniqueID = "\XSNVMGAY"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "1.8 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R11"; Footprint = "RC0805N"; UniqueID = "\LUQELXSP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "10 êÎì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "R12"; Footprint = "RC0805N"; UniqueID = "\AQFGTDYP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/yageo/RC0805JR-07100RL/311-100ARTR-ND/728238"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Hitano"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Package"; Value = "R-0805"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Power"; Value = "0,125 Âò"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Tolerance"; Value = "5%"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Value"; Value = "100 Îì"; VariantName = "[No Variations]"
+Change component parameters: Designator = "VD1"; Footprint = "SOD123"; UniqueID = "\ASFWXQRK"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "NXP"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "1N4148W-7-F"; VariantName = "[No Variations]"
+Change component parameters: Designator = "VD2"; Footprint = "SOD123"; UniqueID = "\OELAICAQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "NXP"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "1N4148W-7-F"; VariantName = "[No Variations]"
+Change component parameters: Designator = "VD3"; Footprint = "SOD123"; UniqueID = "\AYELJFGC"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "NXP"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "1N4148W-7-F"; VariantName = "[No Variations]"
+Change component parameters: Designator = "VT1"; Footprint = "SOT23"; UniqueID = "\MQLWNGJN"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/KSC1623YMTF/KSC1623YMTFTR-ND/1047566"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Infineon"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "KSC1623YMTF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "VT2"; Footprint = "SOT23"; UniqueID = "\MILWXIKI"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/KSC1623YMTF/KSC1623YMTFTR-ND/1047566"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Infineon"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "KSC1623YMTF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "VT3"; Footprint = "SOT23"; UniqueID = "\XGKANWED"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/on-semiconductor/KSC1623YMTF/KSC1623YMTFTR-ND/1047566"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Infineon"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "KSC1623YMTF"; VariantName = "[No Variations]"
+Change component parameters: Designator = "XP1"; Footprint = "TE 282834-2"; UniqueID = "\XOASDBAO"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "KLS"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "732-2747-ND"; VariantName = "[No Variations]"
+Change component parameters: Designator = "ZQ1"; Footprint = "CRYSTAL_ABMM2"; UniqueID = "\PQIGQCSM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Jauch"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "ABMM2-32.768MHZ"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD3"; Footprint = "D14"; UniqueID = "\QYYUCWVL"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4024BM/296-25942-5-ND/1690888"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F24BM"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD4"; Footprint = "D14"; UniqueID = "\UWSCSVOG"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4024BM/296-25942-5-ND/1690888"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F24BM"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD5"; Footprint = "D14"; UniqueID = "\KBCDQTPM"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4070BM96/296-31517-2-ND/1691299"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F70BM96"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD6"; Footprint = "D14"; UniqueID = "\BSQANVSR"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4013BM96/296-24347-2-ND/1690718"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F13BM96"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD7"; Footprint = "D16"; UniqueID = "\IVBGMXYW"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4028BM96/296-16702-2-ND/614903"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F28BM96"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD8"; Footprint = "D16"; UniqueID = "\GVMJXPMT"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4028BM96/296-16702-2-ND/614903"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F28BM96"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD9"; Footprint = "D14"; UniqueID = "\HBFGXNXQ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4023BM/296-25941-5-ND/1690876"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F23BM"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD10"; Footprint = "D14"; UniqueID = "\GRBMPRBP"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4011BM96/296-14474-2-ND/555772"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F11BM96"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD11"; Footprint = "D14"; UniqueID = "\BHJGDTJJ"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4013BM96/296-24347-2-ND/1690718"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F13BM96"; VariantName = "[No Variations]"
+Change component parameters: Designator = "DD2"; Footprint = "D14"; UniqueID = "\FHAVPHLH"
+Change component parameters. Clean all parameters for all variants
+Change component parameters (AddParameter): Name = "ComponentLink1Description"; Value = "CD4011BM96"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink1URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/CD4011BM96/296-14474-2-ND/555772"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2Description"; Value = "Component"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "ComponentLink2URL"; Value = "https://www.digikey.com/product-detail/en/texas-instruments/SN74F38DR/296-14312-2-ND/528568"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Manufacturer"; Value = "Texas Instruments"; VariantName = "[No Variations]"
+Change component parameters (AddParameter): Name = "Name"; Value = "SN74F38DR"; VariantName = "[No Variations]"

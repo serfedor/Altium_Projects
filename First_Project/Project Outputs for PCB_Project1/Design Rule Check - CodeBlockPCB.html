@@ -1,0 +1,829 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD18\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">23.04.2018</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">13:46:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc">C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">159</td></tr>
+</table>
+</td>
+</table><a name="IDD3PDBDFGEKJQJPDWBFZW4JTQQP3LHMFH2FA5CRJFLUM5BQ51TGAO"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDP4BFUNNKRIEUMA2EMEZTWUECWJIXWETKT443EZLP3EIXFOLWNSGE">Clearance Constraint (Gap=0.15mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDGHY1UCTPH30EFW4NZMMRQ14ERGFFRUV3QKDMPHF0A2OGE23F43HJ">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDONRWFHL5UPIUEPOLIGQA0HNYBE3ZJFDZPILLTINII0UJTBVJJISP">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">118</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZ4UYKRMRLXZ3OV3MVU2P1LWGGW1DLYN32KGAEE51QKILX23KT3E">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0UPH2JVROQRDIAX3301FCZHHFCRYOUW2510GVRL4TYT0D10CXAWG">Width Constraint (Min=0.15mm) (Max=0.25mm) (Preferred=0.2mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAJYY2H10ZIT3N4NM2HGLNTZGOWGVTJGDFDI0VPFWWRL3AH4XLVH">Width Constraint (Min=0.3mm) (Max=0.3mm) (Preferred=0.3mm) (InNetClass('GND'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGTPUE0NW2G0SGLFFMFEOY5PW5K3VQU2VJRVRI4B133SLANTUYHBL">Width Constraint (Min=0.3mm) (Max=0.3mm) (Preferred=0.3mm) (InNetClass('VDD'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKSBIGL2Z1KTVDQ0XI0UZXBKYZDG0KOTFXRTPYQBKO3NVF0W0UTMB">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWL5RLEAI55JEORVH2M3QJ3PD5E1IGZHEIKV3QTGIGXWB13Z3IKD">Hole Size Constraint (Min=0.5mm) (Max=3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDY41POWNHNHHUPNHQXDCXFRX1KPAXR2DCS4CWZCJFN0MKZQYDWZ2G">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDMOTCD2COLTZ5J5T2T103MNWCLDQZWP4RJHHOIHHHQHWGW43B2ANN">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLW3PCPQOBTRTBYYZYYB1VFCWGMS3TPM2JROUTHKWANDKIRNZ5IEH">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAFMETKW5YC0ZBI3SN4U53KM2CBBNRWAZOBIECWDJS143RCS5M3TH">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID0RT01RQXPG5NBDZVLNELM5K0BEONZP1DEROBQDMUSCQ50YO3NHUB">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVCK1DLBNLVPTBQAWNJHUSFOOEI02MFNAIXN4NIWTJHRLFBLZIXM">Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock'))</a></td>
+<td class="column2">37</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPFVGLF0KX03UOMTHPYVTGUYIQMIDDDYJZA1CX5BACKXQCVBKC1PJ">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">159</td>
+</tr>
+</table><br><a name="IDONRWFHL5UPIUEPOLIGQA0HNYBE3ZJFDZPILLTINII0UJTBVJJISP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5468.795mil|Location2.X=5707.465mil|Location1.Y=3187.535mil|Location2.Y=3351.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5468.795mil|Location2.X=5707.465mil|Location1.Y=3187.535mil|Location2.Y=3351.205mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C1-1(139.684mm,81.915mm) on Top Layer And Pad C2-1(144.018mm,84.344mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5387.378mil|Location2.X=5529.945mil|Location1.Y=2751.787mil|Location2.Y=3262.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5387.378mil|Location2.X=5529.945mil|Location1.Y=2751.787mil|Location2.Y=3262.465mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD1-7(137.541mm,71.247mm) on Multi-Layer And Pad C1-1(139.684mm,81.915mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5278.5mil|Location2.X=5451.205mil|Location1.Y=3187.535mil|Location2.Y=3262.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5278.5mil|Location2.X=5451.205mil|Location1.Y=3187.535mil|Location2.Y=3262.465mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_2 Between Pad R1-1(134.582mm,81.915mm) on Top Layer And Pad C1-2(137.684mm,81.915mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5353mil|Location2.X=5451.205mil|Location1.Y=3187.535mil|Location2.Y=3405.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5353mil|Location2.X=5451.205mil|Location1.Y=3187.535mil|Location2.Y=3405.5mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_2 Between Pad ZQ1-1(136.868mm,85.801mm) on Top Layer And Pad C1-2(137.684mm,81.915mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5632.535mil|Location2.X=5986mil|Location1.Y=3034mil|Location2.Y=3351.205mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5632.535mil|Location2.X=5986mil|Location1.Y=3034mil|Location2.Y=3351.205mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C2-1(144.018mm,84.344mm) on Top Layer And Pad DD3-7(151.054mm,77.343mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5526mil|Location2.X=5707.465mil|Location1.Y=3368.795mil|Location2.Y=3499.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5526mil|Location2.X=5707.465mil|Location1.Y=3368.795mil|Location2.Y=3499.5mil|Absolute=True">Un-Routed Net Constraint: Net NetC2_2 Between Pad ZQ1-3(141.262mm,88.189mm) on Top Layer And Pad C2-2(144.018mm,86.344mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4128.795mil|Location2.X=4307mil|Location1.Y=3184mil|Location2.Y=3442.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4128.795mil|Location2.X=4307mil|Location1.Y=3184mil|Location2.Y=3442.465mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_1 Between Pad C3-1(105.648mm,86.487mm) on Top Layer And Pad DD5-10(108.407mm,81.153mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3979.173mil|Location2.X=4111.205mil|Location1.Y=3207.039mil|Location2.Y=3442.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3979.173mil|Location2.X=4111.205mil|Location1.Y=3207.039mil|Location2.Y=3442.465mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_2 Between Pad VD1-1(101.473mm,82.116mm) on Top Layer And Pad C3-2(103.648mm,86.487mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4423mil|Location2.X=4521.205mil|Location1.Y=3284mil|Location2.Y=3522.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4423mil|Location2.X=4521.205mil|Location1.Y=3284mil|Location2.Y=3522.465mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD5-7(113.335mm,83.693mm) on Top Layer And Pad C4-1(114.062mm,88.519mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4538.795mil|Location2.X=4628.5mil|Location1.Y=3203.5mil|Location2.Y=3522.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4538.795mil|Location2.X=4628.5mil|Location1.Y=3203.5mil|Location2.Y=3522.465mil|Absolute=True">Un-Routed Net Constraint: Net NetC4_2 Between Pad C4-2(116.062mm,88.519mm) on Top Layer And Pad R8-2(116.967mm,81.877mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411.5mil|Location2.X=3686.205mil|Location1.Y=2722.535mil|Location2.Y=2921.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411.5mil|Location2.X=3686.205mil|Location1.Y=2722.535mil|Location2.Y=2921.5mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R4-1(87.249mm,73.698mm) on Top Layer And Pad C5-1(92.853mm,70.104mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.055mil|Location2.X=3800.929mil|Location1.Y=2722.535mil|Location2.Y=3100.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.055mil|Location2.X=3800.929mil|Location1.Y=2722.535mil|Location2.Y=3100.811mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C5-1(92.853mm,70.104mm) on Top Layer And Pad VT1-3(95.942mm,78.359mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.591mil|Location2.X=3686.205mil|Location1.Y=2538.559mil|Location2.Y=2797.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3496.591mil|Location2.X=3686.205mil|Location1.Y=2538.559mil|Location2.Y=2797.465mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad VT2-1(89.215mm,65.081mm) on Top Layer And Pad C5-1(92.853mm,70.104mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3703.795mil|Location2.X=4075.827mil|Location1.Y=2722.535mil|Location2.Y=2797.465mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3703.795mil|Location2.X=4075.827mil|Location1.Y=2722.535mil|Location2.Y=2797.465mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad C5-2(94.853mm,70.104mm) on Top Layer And Pad VD3-2(103.124mm,70.178mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5052mil|Location1.Y=1819mil|Location2.Y=1891mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5052mil|Location1.Y=1819mil|Location2.Y=1891mil|Absolute=True">Un-Routed Net Constraint: Net NetDD10_1 Between Pad DD10-2(127.33mm,46.482mm) on Top Layer And Pad DD10-1(127.33mm,47.752mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5246mil|Location1.Y=1669mil|Location2.Y=1841mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5246mil|Location1.Y=1669mil|Location2.Y=1841mil|Absolute=True">Un-Routed Net Constraint: Net NetDD10_1 Between Pad DD10-2(127.33mm,46.482mm) on Top Layer And Pad DD10-10(132.258mm,42.672mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5246mil|Location1.Y=1719mil|Location2.Y=2356mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5246mil|Location1.Y=1719mil|Location2.Y=2356mil|Absolute=True">Un-Routed Net Constraint: Net NetDD2_3 Between Pad DD2-3(127.584mm,59.563mm) on Top Layer And Pad DD10-11(132.258mm,43.942mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5168mil|Location2.X=6421mil|Location1.Y=1769mil|Location2.Y=2251mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5168mil|Location2.X=6421mil|Location1.Y=1769mil|Location2.Y=2251mil|Absolute=True">Un-Routed Net Constraint: Net NetDD6_2 Between Pad DD10-12(132.258mm,45.212mm) on Top Layer And Pad DD6-2(162.103mm,56.896mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=5246mil|Location1.Y=1819mil|Location2.Y=1946mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=5246mil|Location1.Y=1819mil|Location2.Y=1946mil|Absolute=True">Un-Routed Net Constraint: Net NetDD10_13 Between Pad DD11-1(108.915mm,49.149mm) on Top Layer And Pad DD10-13(132.258mm,46.482mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=5246mil|Location1.Y=1869mil|Location2.Y=1946mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=5246mil|Location1.Y=1869mil|Location2.Y=1946mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD11-14(113.843mm,49.149mm) on Top Layer And Pad DD10-14(132.258mm,47.752mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5168mil|Location2.X=5256mil|Location1.Y=1869mil|Location2.Y=2456mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5168mil|Location2.X=5256mil|Location1.Y=1869mil|Location2.Y=2456mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD10-14(132.258mm,47.752mm) on Top Layer And Pad DD2-14(132.512mm,62.103mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5168mil|Location2.X=5730mil|Location1.Y=1869mil|Location2.Y=2151mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5168mil|Location2.X=5730mil|Location1.Y=1869mil|Location2.Y=2151mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD10-14(132.258mm,47.752mm) on Top Layer And Pad DD7-16(144.45mm,54.356mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5052mil|Location1.Y=1569mil|Location2.Y=1791mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5052mil|Location1.Y=1569mil|Location2.Y=1791mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD10-7(127.33mm,40.132mm) on Top Layer And Pad DD10-3(127.33mm,45.212mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=5052mil|Location1.Y=1724mil|Location2.Y=1791mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=5052mil|Location1.Y=1724mil|Location2.Y=1791mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD11-10(113.843mm,44.069mm) on Top Layer And Pad DD10-3(127.33mm,45.212mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5062mil|Location1.Y=1769mil|Location2.Y=2156mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5062mil|Location1.Y=1769mil|Location2.Y=2156mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD10-3(127.33mm,45.212mm) on Top Layer And Pad DD2-7(127.584mm,54.483mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5916mil|Location1.Y=1699mil|Location2.Y=1791mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5916mil|Location1.Y=1699mil|Location2.Y=1791mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD10-3(127.33mm,45.212mm) on Top Layer And Pad DD8-8(149.174mm,43.434mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=5052mil|Location1.Y=1719mil|Location2.Y=1846mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=5052mil|Location1.Y=1719mil|Location2.Y=1846mil|Absolute=True">Un-Routed Net Constraint: Net NetDD7_15 Between Pad DD11-3(108.915mm,46.609mm) on Top Layer And Pad DD10-4(127.33mm,43.942mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5803.5mil|Location1.Y=1719mil|Location2.Y=1983.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5803.5mil|Location1.Y=1719mil|Location2.Y=1983.5mil|Absolute=True">Un-Routed Net Constraint: Net NetDD7_15 Between Pad DD10-4(127.33mm,43.942mm) on Top Layer And Pad R9-2(146.812mm,49.873mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5256mil|Location1.Y=1669mil|Location2.Y=2156mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=5256mil|Location1.Y=1669mil|Location2.Y=2156mil|Absolute=True">Un-Routed Net Constraint: Net NetDD2_8 Between Pad DD10-5(127.33mm,42.672mm) on Top Layer And Pad DD2-8(132.512mm,54.483mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4478mil|Location2.X=5052mil|Location1.Y=1619mil|Location2.Y=2411mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4478mil|Location2.X=5052mil|Location1.Y=1619mil|Location2.Y=2411mil|Absolute=True">Un-Routed Net Constraint: Net NetDD9_1 Between Pad DD9-9(114.732mm,60.96mm) on Top Layer And Pad DD10-6(127.33mm,41.402mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4914.189mil|Location2.X=5052mil|Location1.Y=1274.071mil|Location2.Y=1591mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4914.189mil|Location2.X=5052mil|Location1.Y=1274.071mil|Location2.Y=1591mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad VT3-3(125.222mm,32.963mm) on Top Layer And Pad DD10-7(127.33mm,40.132mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5168mil|Location2.X=5256mil|Location1.Y=1569mil|Location2.Y=2406mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5168mil|Location2.X=5256mil|Location1.Y=1569mil|Location2.Y=2406mil|Absolute=True">Un-Routed Net Constraint: Net NetDD2_13 Between Pad DD10-8(132.258mm,40.132mm) on Top Layer And Pad DD2-13(132.512mm,60.833mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5121.5mil|Location2.X=5246mil|Location1.Y=1448.5mil|Location2.Y=1641mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5121.5mil|Location2.X=5246mil|Location1.Y=1448.5mil|Location2.Y=1641mil|Absolute=True">Un-Routed Net Constraint: Net NetDD10_9 Between Pad R10-1(130.683mm,37.3mm) on Top Layer And Pad DD10-9(132.258mm,41.402mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5187.378mil|Location2.X=5251.5mil|Location1.Y=3051.787mil|Location2.Y=3248.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5187.378mil|Location2.X=5251.5mil|Location1.Y=3051.787mil|Location2.Y=3248.5mil|Absolute=True">Un-Routed Net Constraint: Net NetDD1_10 Between Pad DD1-10(132.461mm,78.867mm) on Multi-Layer And Pad R1-2(132.88mm,81.915mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4887.378mil|Location2.X=5142.622mil|Location1.Y=2751.787mil|Location2.Y=3158.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4887.378mil|Location2.X=5142.622mil|Location1.Y=2751.787mil|Location2.Y=3158.213mil|Absolute=True">Un-Routed Net Constraint: Net NetDD1_2 Between Pad DD1-2(124.841mm,71.247mm) on Multi-Layer And Pad DD1-11(129.921mm,78.867mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=4521mil|Location1.Y=1724mil|Location2.Y=1896mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=4521mil|Location1.Y=1724mil|Location2.Y=1896mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD11-10(113.843mm,44.069mm) on Top Layer And Pad DD11-13(113.843mm,47.879mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4521mil|Location1.Y=1724mil|Location2.Y=1746mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4521mil|Location1.Y=1724mil|Location2.Y=1746mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD11-5(108.915mm,44.069mm) on Top Layer And Pad DD11-10(113.843mm,44.069mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=4521mil|Location1.Y=1674mil|Location2.Y=1746mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=4521mil|Location1.Y=1674mil|Location2.Y=1746mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD11-9(113.843mm,42.799mm) on Top Layer And Pad DD11-10(113.843mm,44.069mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4521mil|Location1.Y=1774mil|Location2.Y=1896mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4521mil|Location1.Y=1774mil|Location2.Y=1896mil|Absolute=True">Un-Routed Net Constraint: Net NetDD11_2 Between Pad DD11-2(108.915mm,47.879mm) on Top Layer And Pad DD11-11(113.843mm,45.339mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=4556mil|Location1.Y=1924mil|Location2.Y=2661mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=4556mil|Location1.Y=1924mil|Location2.Y=2661mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD11-14(113.843mm,49.149mm) on Top Layer And Pad DD9-14(114.732mm,67.31mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4129.173mil|Location2.X=4327mil|Location1.Y=1874mil|Location2.Y=2222.961mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4129.173mil|Location2.X=4327mil|Location1.Y=1874mil|Location2.Y=2222.961mil|Absolute=True">Un-Routed Net Constraint: Net NetDD11_2 Between Pad VD2-2(105.283mm,55.806mm) on Top Layer And Pad DD11-2(108.915mm,47.879mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4327mil|Location1.Y=1724mil|Location2.Y=1796mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4327mil|Location1.Y=1724mil|Location2.Y=1796mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD11-5(108.915mm,44.069mm) on Top Layer And Pad DD11-4(108.915mm,45.339mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4362mil|Location1.Y=1774mil|Location2.Y=2361mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4362mil|Location1.Y=1774mil|Location2.Y=2361mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD11-4(108.915mm,45.339mm) on Top Layer And Pad DD9-7(109.804mm,59.69mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=4842.622mil|Location1.Y=2984mil|Location2.Y=3158.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=4842.622mil|Location1.Y=2984mil|Location2.Y=3158.213mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD5-14(108.407mm,76.073mm) on Top Layer And Pad DD1-14(122.301mm,78.867mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4327mil|Location1.Y=1624mil|Location2.Y=1746mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4327mil|Location1.Y=1624mil|Location2.Y=1746mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD11-7(108.915mm,41.529mm) on Top Layer And Pad DD11-5(108.915mm,44.069mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4362mil|Location1.Y=1674mil|Location2.Y=2561mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=4362mil|Location1.Y=1674mil|Location2.Y=2561mil|Absolute=True">Un-Routed Net Constraint: Net NetDD9_3 Between Pad DD11-6(108.915mm,42.799mm) on Top Layer And Pad DD9-3(109.804mm,64.77mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=5986mil|Location1.Y=1624mil|Location2.Y=2956mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4443mil|Location2.X=5986mil|Location1.Y=1624mil|Location2.Y=2956mil|Absolute=True">Un-Routed Net Constraint: Net NetDD3_5 Between Pad DD11-8(113.843mm,41.529mm) on Top Layer And Pad DD3-5(151.054mm,74.803mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4987.378mil|Location2.X=5986mil|Location1.Y=2751.787mil|Location2.Y=2858.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4987.378mil|Location2.X=5986mil|Location1.Y=2751.787mil|Location2.Y=2858.213mil|Absolute=True">Un-Routed Net Constraint: Net NetDD1_3 Between Pad DD1-3(127.381mm,71.247mm) on Multi-Layer And Pad DD3-2(151.054mm,70.993mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4478mil|Location2.X=5042.622mil|Location1.Y=2439mil|Location2.Y=2858.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4478mil|Location2.X=5042.622mil|Location1.Y=2439mil|Location2.Y=2858.213mil|Absolute=True">Un-Routed Net Constraint: Net NetDD1_3 Between Pad DD9-10(114.732mm,62.23mm) on Top Layer And Pad DD1-3(127.381mm,71.247mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5242.622mil|Location1.Y=2434mil|Location2.Y=2858.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5242.622mil|Location1.Y=2434mil|Location2.Y=2858.213mil|Absolute=True">Un-Routed Net Constraint: Net NetDD1_5 Between Pad DD2-1(127.584mm,62.103mm) on Top Layer And Pad DD1-5(132.461mm,71.247mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5287.378mil|Location2.X=5442.622mil|Location1.Y=2751.787mil|Location2.Y=2858.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5287.378mil|Location2.X=5442.622mil|Location1.Y=2751.787mil|Location2.Y=2858.213mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD1-6(135.001mm,71.247mm) on Multi-Layer And Pad DD1-7(137.541mm,71.247mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5278.5mil|Location2.X=5342.622mil|Location1.Y=3051.787mil|Location2.Y=3248.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5278.5mil|Location2.X=5342.622mil|Location1.Y=3051.787mil|Location2.Y=3248.5mil|Absolute=True">Un-Routed Net Constraint: Net NetC1_2 Between Pad R1-1(134.582mm,81.915mm) on Top Layer And Pad DD1-9(135.001mm,78.867mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5062mil|Location1.Y=2384mil|Location2.Y=2456mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5062mil|Location1.Y=2384mil|Location2.Y=2456mil|Absolute=True">Un-Routed Net Constraint: Net NetDD1_5 Between Pad DD2-2(127.584mm,60.833mm) on Top Layer And Pad DD2-1(127.584mm,62.103mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5178mil|Location2.X=5256mil|Location1.Y=2234mil|Location2.Y=2356mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5178mil|Location2.X=5256mil|Location1.Y=2234mil|Location2.Y=2356mil|Absolute=True">Un-Routed Net Constraint: Net NetDD2_10 Between Pad DD2-10(132.512mm,57.023mm) on Top Layer And Pad DD2-12(132.512mm,59.563mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5178mil|Location2.X=5986mil|Location1.Y=2284mil|Location2.Y=2756mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5178mil|Location2.X=5986mil|Location1.Y=2284mil|Location2.Y=2756mil|Absolute=True">Un-Routed Net Constraint: Net NetDD2_11 Between Pad DD2-11(132.512mm,58.293mm) on Top Layer And Pad DD3-1(151.054mm,69.723mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5256mil|Location1.Y=2184mil|Location2.Y=2406mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5256mil|Location1.Y=2184mil|Location2.Y=2406mil|Absolute=True">Un-Routed Net Constraint: Net NetDD1_5 Between Pad DD2-2(127.584mm,60.833mm) on Top Layer And Pad DD2-9(132.512mm,55.753mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5730mil|Location1.Y=1599mil|Location2.Y=2306mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5730mil|Location1.Y=1599mil|Location2.Y=2306mil|Absolute=True">Un-Routed Net Constraint: Net NetDD2_4 Between Pad DD2-4(127.584mm,58.293mm) on Top Layer And Pad DD8-11(144.45mm,40.894mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5062mil|Location1.Y=2184mil|Location2.Y=2256mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5062mil|Location1.Y=2184mil|Location2.Y=2256mil|Absolute=True">Un-Routed Net Constraint: Net NetDD2_5 Between Pad DD2-6(127.584mm,55.753mm) on Top Layer And Pad DD2-5(127.584mm,57.023mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5730mil|Location1.Y=2234mil|Location2.Y=2401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=5730mil|Location1.Y=2234mil|Location2.Y=2401mil|Absolute=True">Un-Routed Net Constraint: Net NetDD2_5 Between Pad DD2-5(127.584mm,57.023mm) on Top Layer And Pad DD7-11(144.45mm,60.706mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5792mil|Location1.Y=2279mil|Location2.Y=2906mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5792mil|Location1.Y=2279mil|Location2.Y=2906mil|Absolute=True">Un-Routed Net Constraint: Net NetDD3_11 Between Pad DD7-13(144.45mm,58.166mm) on Top Layer And Pad DD3-11(146.126mm,73.533mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5792mil|Location1.Y=2429mil|Location2.Y=2856mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5792mil|Location1.Y=2429mil|Location2.Y=2856mil|Absolute=True">Un-Routed Net Constraint: Net NetDD3_12 Between Pad DD7-10(144.45mm,61.976mm) on Top Layer And Pad DD3-12(146.126mm,72.263mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5714mil|Location2.X=6232mil|Location1.Y=2734mil|Location2.Y=2766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5714mil|Location2.X=6232mil|Location1.Y=2734mil|Location2.Y=2766mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD3-14(146.126mm,69.723mm) on Top Layer And Pad DD4-14(157.302mm,69.977mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5908mil|Location2.X=6426mil|Location1.Y=2744mil|Location2.Y=2956mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5908mil|Location2.X=6426mil|Location1.Y=2744mil|Location2.Y=2956mil|Absolute=True">Un-Routed Net Constraint: Net NetDD3_5 Between Pad DD3-5(151.054mm,74.803mm) on Top Layer And Pad DD4-1(162.23mm,69.977mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5986mil|Location1.Y=2379mil|Location2.Y=3006mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5986mil|Location1.Y=2379mil|Location2.Y=3006mil|Absolute=True">Un-Routed Net Constraint: Net NetDD2_5 Between Pad DD7-11(144.45mm,60.706mm) on Top Layer And Pad DD3-6(151.054mm,76.073mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5908mil|Location2.X=6426mil|Location1.Y=3034mil|Location2.Y=3066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5908mil|Location2.X=6426mil|Location1.Y=3034mil|Location2.Y=3066mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD3-7(151.054mm,77.343mm) on Top Layer And Pad DD4-7(162.23mm,77.597mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5792mil|Location1.Y=2329mil|Location2.Y=3006mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5792mil|Location1.Y=2329mil|Location2.Y=3006mil|Absolute=True">Un-Routed Net Constraint: Net NetDD3_9 Between Pad DD7-12(144.45mm,59.436mm) on Top Layer And Pad DD3-9(146.126mm,76.073mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149mil|Location2.X=6232mil|Location1.Y=2179mil|Location2.Y=2766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149mil|Location2.X=6232mil|Location1.Y=2179mil|Location2.Y=2766mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD6-14(157.175mm,55.626mm) on Top Layer And Pad DD4-14(157.302mm,69.977mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6348mil|Location2.X=6426mil|Location1.Y=2794mil|Location2.Y=2966mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6348mil|Location2.X=6426mil|Location1.Y=2794mil|Location2.Y=2966mil|Absolute=True">Un-Routed Net Constraint: Net NetDD4_2 Between Pad DD4-2(162.23mm,71.247mm) on Top Layer And Pad DD4-5(162.23mm,75.057mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6426mil|Location1.Y=2329mil|Location2.Y=2816mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6426mil|Location1.Y=2329mil|Location2.Y=2816mil|Absolute=True">Un-Routed Net Constraint: Net NetDD4_2 Between Pad DD6-4(162.103mm,59.436mm) on Top Layer And Pad DD4-2(162.23mm,71.247mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6426mil|Location1.Y=2479mil|Location2.Y=3066mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6426mil|Location1.Y=2479mil|Location2.Y=3066mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD6-7(162.103mm,63.246mm) on Top Layer And Pad DD4-7(162.23mm,77.597mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=4501mil|Location1.Y=3184mil|Location2.Y=3206mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=4501mil|Location1.Y=3184mil|Location2.Y=3206mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_1 Between Pad DD5-10(108.407mm,81.153mm) on Top Layer And Pad DD5-5(113.335mm,81.153mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.5mil|Location2.X=4307mil|Location1.Y=3116.5mil|Location2.Y=3156.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.5mil|Location2.X=4307mil|Location1.Y=3116.5mil|Location2.Y=3156.5mil|Absolute=True">Un-Routed Net Constraint: Net NetDD5_11 Between Pad R7-1(105.664mm,79.667mm) on Top Layer And Pad DD5-11(108.407mm,79.883mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4116.5mil|Location2.X=4307mil|Location1.Y=3048.5mil|Location2.Y=3106mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4116.5mil|Location2.X=4307mil|Location1.Y=3048.5mil|Location2.Y=3106mil|Absolute=True">Un-Routed Net Constraint: Net NetDD5_12 Between Pad R5-2(105.156mm,77.94mm) on Top Layer And Pad DD5-12(108.407mm,78.613mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4116.5mil|Location2.X=4307mil|Location1.Y=2981.5mil|Location2.Y=3056mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4116.5mil|Location2.X=4307mil|Location1.Y=2981.5mil|Location2.Y=3056mil|Absolute=True">Un-Routed Net Constraint: Net NetDD5_13 Between Pad R5-1(105.156mm,76.238mm) on Top Layer And Pad DD5-13(108.407mm,77.343mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.173mil|Location2.X=4307mil|Location1.Y=2737.039mil|Location2.Y=3006mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.173mil|Location2.X=4307mil|Location1.Y=2737.039mil|Location2.Y=3006mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad VD3-2(103.124mm,70.178mm) on Top Layer And Pad DD5-14(108.407mm,76.073mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4423mil|Location2.X=4556mil|Location1.Y=2589mil|Location2.Y=3156mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4423mil|Location2.X=4556mil|Location1.Y=2589mil|Location2.Y=3156mil|Absolute=True">Un-Routed Net Constraint: Net NetDD5_4 Between Pad DD5-4(113.335mm,79.883mm) on Top Layer And Pad DD9-13(114.732mm,66.04mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4423mil|Location2.X=4628.5mil|Location1.Y=3136.5mil|Location2.Y=3206mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4423mil|Location2.X=4628.5mil|Location1.Y=3136.5mil|Location2.Y=3206mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_1 Between Pad DD5-5(113.335mm,81.153mm) on Top Layer And Pad R8-1(116.967mm,80.175mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4423mil|Location2.X=4628.5mil|Location1.Y=3203.5mil|Location2.Y=3256mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4423mil|Location2.X=4628.5mil|Location1.Y=3203.5mil|Location2.Y=3256mil|Absolute=True">Un-Routed Net Constraint: Net NetC4_2 Between Pad DD5-6(113.335mm,82.423mm) on Top Layer And Pad R8-2(116.967mm,81.877mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=4501mil|Location1.Y=3284mil|Location2.Y=3306mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=4501mil|Location1.Y=3284mil|Location2.Y=3306mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD5-8(108.407mm,83.693mm) on Top Layer And Pad DD5-7(113.335mm,83.693mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=4362mil|Location1.Y=2339mil|Location2.Y=3306mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=4362mil|Location1.Y=2339mil|Location2.Y=3306mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD5-8(108.407mm,83.693mm) on Top Layer And Pad DD9-7(109.804mm,59.69mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.551mil|Location2.X=4307mil|Location1.Y=3284mil|Location2.Y=3528.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.551mil|Location2.X=4307mil|Location1.Y=3284mil|Location2.Y=3528.213mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad XP1-2(96.52mm,88.265mm) on Multi-Layer And Pad DD5-8(108.407mm,83.693mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.5mil|Location2.X=4307mil|Location1.Y=3183.5mil|Location2.Y=3256mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136.5mil|Location2.X=4307mil|Location1.Y=3183.5mil|Location2.Y=3256mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_2 Between Pad R7-2(105.664mm,81.369mm) on Top Layer And Pad DD5-9(108.407mm,82.423mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=6227mil|Location1.Y=2129mil|Location2.Y=2201mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=6227mil|Location1.Y=2129mil|Location2.Y=2201mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD7-16(144.45mm,54.356mm) on Top Layer And Pad DD6-14(157.175mm,55.626mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149mil|Location2.X=6227mil|Location1.Y=2018.5mil|Location2.Y=2201mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149mil|Location2.X=6227mil|Location1.Y=2018.5mil|Location2.Y=2201mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD6-14(157.175mm,55.626mm) on Top Layer And Pad R6-2(157.226mm,51.778mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6421mil|Location1.Y=2279mil|Location2.Y=2401mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6421mil|Location1.Y=2279mil|Location2.Y=2401mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD6-3(162.103mm,58.166mm) on Top Layer And Pad DD6-5(162.103mm,60.706mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6424.591mil|Location1.Y=1771.984mil|Location2.Y=2301mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6424.591mil|Location1.Y=1771.984mil|Location2.Y=2301mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD6-3(162.103mm,58.166mm) on Top Layer And Pad XP2-2(162.433mm,45.76mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6421mil|Location1.Y=2379mil|Location2.Y=2501mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6421mil|Location1.Y=2379mil|Location2.Y=2501mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD6-5(162.103mm,60.706mm) on Top Layer And Pad DD6-7(162.103mm,63.246mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6424.591mil|Location1.Y=1870.409mil|Location2.Y=2451mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6343mil|Location2.X=6424.591mil|Location1.Y=1870.409mil|Location2.Y=2451mil|Absolute=True">Un-Routed Net Constraint: Net NetDD6_6 Between Pad DD6-6(162.103mm,61.976mm) on Top Layer And Pad XP2-1(162.433mm,48.26mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5830mil|Location2.X=6421mil|Location1.Y=2479mil|Location2.Y=2501mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5830mil|Location2.X=6421mil|Location1.Y=2479mil|Location2.Y=2501mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD7-8(149.174mm,63.246mm) on Top Layer And Pad DD6-7(162.103mm,63.246mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5730mil|Location1.Y=1649mil|Location2.Y=2451mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5730mil|Location1.Y=1649mil|Location2.Y=2451mil|Absolute=True">Un-Routed Net Constraint: Net NetDD3_12 Between Pad DD8-10(144.45mm,42.164mm) on Top Layer And Pad DD7-10(144.45mm,61.976mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5730mil|Location1.Y=1549mil|Location2.Y=2351mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5730mil|Location1.Y=1549mil|Location2.Y=2351mil|Absolute=True">Un-Routed Net Constraint: Net NetDD3_9 Between Pad DD8-12(144.45mm,39.624mm) on Top Layer And Pad DD7-12(144.45mm,59.436mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5730mil|Location1.Y=1499mil|Location2.Y=2301mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5730mil|Location1.Y=1499mil|Location2.Y=2301mil|Absolute=True">Un-Routed Net Constraint: Net NetDD3_11 Between Pad DD8-13(144.45mm,38.354mm) on Top Layer And Pad DD7-13(144.45mm,58.166mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5803.5mil|Location1.Y=1943.5mil|Location2.Y=2201mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5803.5mil|Location1.Y=1943.5mil|Location2.Y=2201mil|Absolute=True">Un-Routed Net Constraint: Net NetDD7_15 Between Pad DD7-15(144.45mm,55.626mm) on Top Layer And Pad R9-2(146.812mm,49.873mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5730mil|Location1.Y=1349mil|Location2.Y=2151mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=5730mil|Location1.Y=1349mil|Location2.Y=2151mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad DD8-16(144.45mm,34.544mm) on Top Layer And Pad DD7-16(144.45mm,54.356mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5756.5mil|Location2.X=5916mil|Location1.Y=1499mil|Location2.Y=1916.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5756.5mil|Location2.X=5916mil|Location1.Y=1499mil|Location2.Y=1916.5mil|Absolute=True">Un-Routed Net Constraint: Net NetDD8_4 Between Pad R9-1(146.812mm,48.171mm) on Top Layer And Pad DD8-4(149.174mm,38.354mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5830mil|Location2.X=6424.591mil|Location1.Y=1699mil|Location2.Y=1831.165mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5830mil|Location2.X=6424.591mil|Location1.Y=1699mil|Location2.Y=1831.165mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad DD8-8(149.174mm,43.434mm) on Top Layer And Pad XP2-2(162.433mm,45.76mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4284mil|Location2.X=4362mil|Location1.Y=2589mil|Location2.Y=2661mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4284mil|Location2.X=4362mil|Location1.Y=2589mil|Location2.Y=2661mil|Absolute=True">Un-Routed Net Constraint: Net NetDD9_1 Between Pad DD9-2(109.804mm,66.04mm) on Top Layer And Pad DD9-1(109.804mm,67.31mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4478mil|Location2.X=4556mil|Location1.Y=2339mil|Location2.Y=2511mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4478mil|Location2.X=4556mil|Location1.Y=2339mil|Location2.Y=2511mil|Absolute=True">Un-Routed Net Constraint: Net NetDD9_8 Between Pad DD9-8(114.732mm,59.69mm) on Top Layer And Pad DD9-11(114.732mm,63.5mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4478mil|Location2.X=4556mil|Location1.Y=2539mil|Location2.Y=2611mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4478mil|Location2.X=4556mil|Location1.Y=2539mil|Location2.Y=2611mil|Absolute=True">Un-Routed Net Constraint: Net NetDD5_4 Between Pad DD9-12(114.732mm,64.77mm) on Top Layer And Pad DD9-13(114.732mm,66.04mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.173mil|Location2.X=4556mil|Location1.Y=2639mil|Location2.Y=2788.787mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4044.173mil|Location2.X=4556mil|Location1.Y=2639mil|Location2.Y=2788.787mil|Absolute=True">Un-Routed Net Constraint: Net VDD Between Pad VD3-2(103.124mm,70.178mm) on Top Layer And Pad DD9-14(114.732mm,67.31mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4284mil|Location2.X=4556mil|Location1.Y=2389mil|Location2.Y=2611mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4284mil|Location2.X=4556mil|Location1.Y=2389mil|Location2.Y=2611mil|Absolute=True">Un-Routed Net Constraint: Net NetDD9_1 Between Pad DD9-2(109.804mm,66.04mm) on Top Layer And Pad DD9-9(114.732mm,60.96mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4951.591mil|Location2.X=5168.5mil|Location1.Y=1368.559mil|Location2.Y=1421.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4951.591mil|Location2.X=5168.5mil|Location1.Y=1368.559mil|Location2.Y=1421.5mil|Absolute=True">Un-Routed Net Constraint: Net NetR10_2 Between Pad VT3-1(126.172mm,35.363mm) on Top Layer And Pad R10-2(130.683mm,35.598mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3236.5mil|Location2.X=3453.41mil|Location1.Y=2538.559mil|Location2.Y=2621.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3236.5mil|Location2.X=3453.41mil|Location1.Y=2538.559mil|Location2.Y=2621.5mil|Absolute=True">Un-Routed Net Constraint: Net NetR11_1 Between Pad R11-1(82.804mm,66.078mm) on Top Layer And Pad VT2-2(87.315mm,65.081mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3236.5mil|Location2.X=3953.5mil|Location1.Y=1703.5mil|Location2.Y=2688.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3236.5mil|Location2.X=3953.5mil|Location1.Y=1703.5mil|Location2.Y=2688.5mil|Absolute=True">Un-Routed Net Constraint: Net NetR3_2 Between Pad R11-2(82.804mm,67.78mm) on Top Layer And Pad R12-2(99.822mm,43.777mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3236.5mil|Location2.X=3458.5mil|Location1.Y=2648.5mil|Location2.Y=3198.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3236.5mil|Location2.X=3458.5mil|Location1.Y=2648.5mil|Location2.Y=3198.5mil|Absolute=True">Un-Routed Net Constraint: Net NetR3_2 Between Pad R11-2(82.804mm,67.78mm) on Top Layer And Pad R3-2(87.249mm,80.734mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5211.5mil|Location2.X=5258.5mil|Location1.Y=3201.5mil|Location2.Y=3396.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5211.5mil|Location2.X=5258.5mil|Location1.Y=3201.5mil|Location2.Y=3396.5mil|Absolute=True">Un-Routed Net Constraint: Net NetDD1_10 Between Pad R1-2(132.88mm,81.915mm) on Top Layer And Pad R2-2(132.969mm,85.763mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.5mil|Location2.X=4908.409mil|Location1.Y=1368.559mil|Location2.Y=1676.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906.5mil|Location2.X=4908.409mil|Location1.Y=1368.559mil|Location2.Y=1676.5mil|Absolute=True">Un-Routed Net Constraint: Net NetR12_1 Between Pad R12-1(99.822mm,42.075mm) on Top Layer And Pad VT3-2(124.272mm,35.363mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5211.5mil|Location2.X=5597mil|Location1.Y=3423.5mil|Location2.Y=3499.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5211.5mil|Location2.X=5597mil|Location1.Y=3423.5mil|Location2.Y=3499.5mil|Absolute=True">Un-Routed Net Constraint: Net NetC2_2 Between Pad R2-1(132.969mm,87.465mm) on Top Layer And Pad ZQ1-3(141.262mm,88.189mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411.5mil|Location2.X=3458.5mil|Location1.Y=2948.5mil|Location2.Y=3131.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411.5mil|Location2.X=3458.5mil|Location1.Y=2948.5mil|Location2.Y=3131.5mil|Absolute=True">Un-Routed Net Constraint: Net NetR3_1 Between Pad R4-2(87.249mm,75.4mm) on Top Layer And Pad R3-1(87.249mm,79.032mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411.5mil|Location2.X=3706.441mil|Location1.Y=3091.5mil|Location2.Y=3138.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411.5mil|Location2.X=3706.441mil|Location1.Y=3091.5mil|Location2.Y=3138.213mil|Absolute=True">Un-Routed Net Constraint: Net NetR3_1 Between Pad R3-1(87.249mm,79.032mm) on Top Layer And Pad VT1-1(93.542mm,79.309mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411.5mil|Location2.X=3738.449mil|Location1.Y=3158.5mil|Location2.Y=3528.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411.5mil|Location2.X=3738.449mil|Location1.Y=3158.5mil|Location2.Y=3528.213mil|Absolute=True">Un-Routed Net Constraint: Net NetR3_2 Between Pad R3-2(87.249mm,80.734mm) on Top Layer And Pad XP1-1(93.98mm,88.265mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4116.5mil|Location2.X=4163.5mil|Location1.Y=2307.039mil|Location2.Y=3021.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4116.5mil|Location2.X=4163.5mil|Location1.Y=2307.039mil|Location2.Y=3021.5mil|Absolute=True">Un-Routed Net Constraint: Net NetDD5_13 Between Pad R5-1(105.156mm,76.238mm) on Top Layer And Pad VD2-1(105.283mm,59.256mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3659.071mil|Location2.X=4163.5mil|Location1.Y=3031.787mil|Location2.Y=3088.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3659.071mil|Location2.X=4163.5mil|Location1.Y=3031.787mil|Location2.Y=3088.5mil|Absolute=True">Un-Routed Net Constraint: Net NetDD5_12 Between Pad VT1-2(93.542mm,77.409mm) on Top Layer And Pad R5-2(105.156mm,77.94mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6166.5mil|Location2.X=6424.591mil|Location1.Y=1870.409mil|Location2.Y=1991.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6166.5mil|Location2.X=6424.591mil|Location1.Y=1870.409mil|Location2.Y=1991.5mil|Absolute=True">Un-Routed Net Constraint: Net NetDD6_6 Between Pad R6-1(157.226mm,50.076mm) on Top Layer And Pad XP2-1(162.433mm,48.26mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3979.173mil|Location2.X=4183.5mil|Location1.Y=3071.213mil|Location2.Y=3156.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3979.173mil|Location2.X=4183.5mil|Location1.Y=3071.213mil|Location2.Y=3156.5mil|Absolute=True">Un-Routed Net Constraint: Net NetDD5_11 Between Pad VD1-2(101.473mm,78.666mm) on Top Layer And Pad R7-1(105.664mm,79.667mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3979.173mil|Location2.X=4183.5mil|Location1.Y=3183.5mil|Location2.Y=3258.787mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3979.173mil|Location2.X=4183.5mil|Location1.Y=3183.5mil|Location2.Y=3258.787mil|Absolute=True">Un-Routed Net Constraint: Net NetC3_2 Between Pad VD1-1(101.473mm,82.116mm) on Top Layer And Pad R7-2(105.664mm,81.369mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3421.787mil|Location2.X=4075.827mil|Location1.Y=2538.559mil|Location2.Y=2652.961mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3421.787mil|Location2.X=4075.827mil|Location1.Y=2538.559mil|Location2.Y=2652.961mil|Absolute=True">Un-Routed Net Constraint: Net NetR11_1 Between Pad VT2-2(87.315mm,65.081mm) on Top Layer And Pad VD3-1(103.124mm,66.728mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3753.559mil|Location2.X=3838.449mil|Location1.Y=3069.189mil|Location2.Y=3528.213mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3753.559mil|Location2.X=3838.449mil|Location1.Y=3069.189mil|Location2.Y=3528.213mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad VT1-3(95.942mm,78.359mm) on Top Layer And Pad XP1-2(96.52mm,88.265mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDLW3PCPQOBTRTBYYZYYB1VFCWGMS3TPM2JROUTHKWANDKIRNZ5IEH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5171.292mil|Location2.X=5182.542mil|Location1.Y=1560.054mil|Location2.Y=1571.304mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5171.292mil|Location2.X=5182.542mil|Location1.Y=1560.054mil|Location2.Y=1571.304mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.169mm &lt; 0.254mm) Between Pad DD10-8(132.258mm,40.132mm) on Top Layer And Text "R10" (130.327mm,38.557mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.169mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDAFMETKW5YC0ZBI3SN4U53KM2CBBNRWAZOBIECWDJS143RCS5M3TH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5440.662mil|Location2.X=5451.912mil|Location1.Y=3332.554mil|Location2.Y=3343.804mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5440.662mil|Location2.X=5451.912mil|Location1.Y=3332.554mil|Location2.Y=3343.804mil|Absolute=True">Silk To Silk Clearance Constraint: (0.093mm &lt; 0.254mm) Between Text "C1" (137.169mm,83.617mm) on Top Overlay And Track (138.042mm,84.912mm)(140.088mm,84.912mm) on Top Overlay Silk Text to Silk Clearance [0.093mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5127.167mil|Location2.X=5134.833mil|Location1.Y=1549.167mil|Location2.Y=1556.833mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5127.167mil|Location2.X=5134.833mil|Location1.Y=1549.167mil|Location2.Y=1556.833mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.254mm) Between Text "R10" (130.327mm,38.557mm) on Top Overlay And Track (127.673mm,39.446mm)(131.915mm,39.446mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4026.662mil|Location2.X=4037.912mil|Location1.Y=3144.375mil|Location2.Y=3155.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4026.662mil|Location2.X=4037.912mil|Location1.Y=3144.375mil|Location2.Y=3155.625mil|Absolute=True">Silk To Silk Clearance Constraint: (0.138mm &lt; 0.254mm) Between Text "R7" (102.616mm,80.01mm) on Top Overlay And Track (102.275mm,78.839mm)(102.275mm,81.943mm) on Top Overlay Silk Text to Silk Clearance [0.138mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDVCK1DLBNLVPTBQAWNJHUSFOOEI02MFNAIXN4NIWTJHRLFBLZIXM"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock'))</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5343mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5343mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Component ZQ1-ABMM2-32.768MHZ Jauch (139.065mm,86.995mm) on Top Layer And Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4755.945mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4755.945mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between DIP Component DD1-Ê176ÈÅ5 ÑÑÑÐ (122.301mm,71.247mm) on Top Layer And Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3637.001mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3637.001mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And Small Component XP1-732-2747-ND KLS (95.25mm,88.265mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6342.835mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6342.835mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And Small Component XP2-PLS-2 Ningbo Zhenqin Electronic (162.433mm,48.26mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5390.055mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5390.055mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component C1-Ñ-0805 50 Â 62 ïÔ 5% C0G/NP0 Kemet (138.684mm,81.915mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5632.535mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5632.535mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component C2-Ñ-0805 50 Â 22 ïÔ 5% C0G/NP0 Kemet (144.018mm,85.344mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4050.055mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4050.055mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component C3-Ñ-0805 50 Â 0.1 ïÔ 5% C0G/NP0 Kemet (104.648mm,86.487mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4460.055mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4460.055mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component C4-Ñ-0805 50 Â 3300 ïÔ 5% C0G/NP0 Kemet (115.062mm,88.519mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.055mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3625.055mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component C5-Ñ-0805 50 Â 100 ïÔ 5% C0G/NP0 Kemet (93.853mm,70.104mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5121mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5121mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R10-R-0805 0,125 Âò 1.8 êÎì 5% Hitano (130.683mm,36.449mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3236mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3236mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R11-R-0805 0,125 Âò 10 êÎì 5% Hitano (82.804mm,66.929mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3906mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R12-R-0805 0,125 Âò 100 Îì 5% Hitano (99.822mm,42.926mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5211.5mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5211.5mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R1-R-0805 0,125 Âò 22 ÌÎì 5% Hitano (133.731mm,81.915mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5211mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5211mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R2-R-0805 0,125 Âò 560 êÎì 5% Hitano (132.969mm,86.614mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R3-R-0805 0,125 Âò 100 êÎì 5% Hitano (87.249mm,79.883mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3411mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R4-R-0805 0,125 Âò 10 êÎì 5% Hitano (87.249mm,74.549mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4116mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4116mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R5-R-0805 0,125 Âò 56 êÎì 5% Hitano (105.156mm,77.089mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6166mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6166mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R6-R-0805 0,125 Âò 1 êÎì 5% Hitano (157.226mm,50.927mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4136mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R7-R-0805 0,125 Âò 200 êÎì 5% Hitano (105.664mm,80.518mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4581mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4581mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R8-R-0805 0,125 Âò 10 êÎì 5% Hitano (116.967mm,81.026mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5756mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5756mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component R9-R-0805 0,125 Âò 56 êÎì 5% Hitano (146.812mm,49.022mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3960.425mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3960.425mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component VD1-1N4148W-7-F NXP (101.473mm,80.391mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4110.425mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4110.425mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component VD2-1N4148W-7-F NXP (105.283mm,57.531mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4025.425mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4025.425mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component VD3-1N4148W-7-F NXP (103.124mm,68.453mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3659.071mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3659.071mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component VT1-KSC1623YMTF Infineon (94.742mm,78.359mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3412.008mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3412.008mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component VT2-KSC1623YMTF Infineon (88.265mm,63.881mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4867.008mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4867.008mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SMT Small Component VT3-KSC1623YMTF Infineon (125.222mm,34.163mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4974mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD10-SN74F23BM Texas Instruments (129.794mm,43.942mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4249mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD11-SN74F13BM96 Texas Instruments (111.379mm,45.339mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4984mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD2-SN74F38DR Texas Instruments (130.048mm,58.293mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5714mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5714mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD3-SN74F24BM Texas Instruments (148.59mm,73.533mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6154mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6154mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD4-SN74F24BM Texas Instruments (159.766mm,73.787mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4229mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD5-SN74F70BM96 Texas Instruments (110.871mm,79.883mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6149mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD6-SN74F13BM96 Texas Instruments (159.639mm,59.436mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD7-SN74F28BM96 Texas Instruments (146.812mm,58.801mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5644mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD8-SN74F28BM96 Texas Instruments (146.812mm,38.989mm) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4284mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4284mil|Location2.X=16288.744mil|Location1.Y=752.598mil|Location2.Y=4612.598mil|Absolute=True">Room Definition: Between Room CodeBlock (Bounding Region = (187.928mm, 19.116mm, 413.734mm, 117.16mm) (InComponentClass('CodeBlock')) And SOIC Component DD9-SN74F11BM96 Texas Instruments (112.268mm,63.5mm) on Top Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

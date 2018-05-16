@@ -1,0 +1,52 @@
+Removed Pin From Net: NetName=NetDD2_13 Pin=DD2-13
+Removed Pin From Net: NetName=GND Pin=DD10-3
+Removed Pin From Net: NetName=NetDD2_13 Pin=DD10-8
+Removed Pin From Net: NetName=GND Pin=DD11-13
+Change Component Designator: OldDesignator=R10 NewDesignator=R11
+Change Component Designator: OldDesignator=R11 NewDesignator=R10
+Added Pin To Net: NetName=NetDD10_1 Pin=DD2-13
+Added Pin To Net: NetName=NetDD2_13 Pin=DD10-3
+Added Pin To Net: NetName=NetDD10_1 Pin=DD10-8
+Added Pin To Net: NetName=NetDD2_13 Pin=DD11-13
+Change Net Name : Old Net Name=NetDD2_13 New Net Name=NetDD10_3
+Change Net Name : Old Net Name=NetDD10_1 New Net Name=NetDD2_13
+Change Net Name : Old Net Name=NetR10_2 New Net Name=NetR11_2
+Change Net Name : Old Net Name=NetR11_1 New Net Name=NetR10_1
+Added Member To Class: ClassName=CodeBlock Member=Component C1 Ñ-0805 50 Â 62 ïÔ 5% C0G/NP0 Kemet
+Added Member To Class: ClassName=CodeBlock Member=Component C2 Ñ-0805 50 Â 22 ïÔ 5% C0G/NP0 Kemet
+Added Member To Class: ClassName=CodeBlock Member=Component C3 Ñ-0805 50 Â 0.1 ïÔ 5% C0G/NP0 Kemet
+Added Member To Class: ClassName=CodeBlock Member=Component C4 Ñ-0805 50 Â 3300 ïÔ 5% C0G/NP0 Kemet
+Added Member To Class: ClassName=CodeBlock Member=Component C5 Ñ-0805 50 Â 100 ïÔ 5% C0G/NP0 Kemet
+Added Member To Class: ClassName=CodeBlock Member=Component DD1 Ê176ÈÅ5 ÑÑÑÐ
+Added Member To Class: ClassName=CodeBlock Member=Component DD2 SN74F38DR Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component DD3 SN74F24BM Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component DD4 SN74F24BM Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component DD5 SN74F70BM96 Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component DD6 SN74F13BM96 Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component DD7 SN74F28BM96 Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component DD8 SN74F28BM96 Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component DD9 SN74F11BM96 Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component DD10 SN74F23BM Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component DD11 SN74F13BM96 Texas Instruments
+Added Member To Class: ClassName=CodeBlock Member=Component R1 R-0805 0,125 Âò 22 ÌÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R2 R-0805 0,125 Âò 560 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R3 R-0805 0,125 Âò 100 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R4 R-0805 0,125 Âò 10 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R5 R-0805 0,125 Âò 56 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R6 R-0805 0,125 Âò 1 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R7 R-0805 0,125 Âò 200 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R8 R-0805 0,125 Âò 10 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R9 R-0805 0,125 Âò 56 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R10 R-0805 0,125 Âò 10 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R11 R-0805 0,125 Âò 1.8 êÎì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component R12 R-0805 0,125 Âò 100 Îì 5% Hitano
+Added Member To Class: ClassName=CodeBlock Member=Component VD1 1N4148W-7-F NXP
+Added Member To Class: ClassName=CodeBlock Member=Component VD2 1N4148W-7-F NXP
+Added Member To Class: ClassName=CodeBlock Member=Component VD3 1N4148W-7-F NXP
+Added Member To Class: ClassName=CodeBlock Member=Component VT1 KSC1623YMTF Infineon
+Added Member To Class: ClassName=CodeBlock Member=Component VT2 KSC1623YMTF Infineon
+Added Member To Class: ClassName=CodeBlock Member=Component VT3 KSC1623YMTF Infineon
+Added Member To Class: ClassName=CodeBlock Member=Component XP1 732-2747-ND KLS
+Added Member To Class: ClassName=CodeBlock Member=Component XP2 PLS-2 Ningbo Zhenqin Electronic
+Added Member To Class: ClassName=CodeBlock Member=Component ZQ1 ABMM2-32.768MHZ Jauch
+Added Room: Name=CodeBlock

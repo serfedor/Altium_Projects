@@ -1,0 +1,7 @@
+DRC Rules Export File for PCB: C:\Users\Public\Documents\Altium\Project\CodeBlockPCB.PcbDoc
+RuleKind=Width|RuleName=Width_GND|Scope=Board|Minimum=11.81
+RuleKind=Width|RuleName=Width_VDD|Scope=Board|Minimum=11.81
+RuleKind=SolderMaskExpansion|RuleName=SolderMaskExpansion|Scope=Board|Minimum=4.00
+RuleKind=Width|RuleName=Width|Scope=Board|Minimum=5.91
+RuleKind=Clearance|RuleName=Clearance|Scope=Board|Minimum=5.91
+RuleKind=ShortCircuit|RuleName=ShortCircuit|Scope=Board|Allowed=0
