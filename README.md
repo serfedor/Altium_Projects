@@ -1,2 +1,2 @@
-# Altium_Projects
+# Altium_Project
 Altium Design project
