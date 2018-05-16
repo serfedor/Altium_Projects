@@ -1,8 +1,8 @@
-History/
-Print/
-Project Logs for PCB_Project1/
-Project Outputs for PCB_Project1/
+history/
+print/
+project Logs for PCB_Project1/
+project Outputs for PCB_Project1/
 *.cmp
 *.PrjPCBStructure
-*.Dat
+*.dat
 
